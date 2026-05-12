@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="dark" />
+  <title>PANTRY OPS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <header class="hdr">
+    <div class="hdr-left">
+      <div class="hdr-mark">▮▮▮</div>
+      <div class="hdr-title">
+        <h1>PANTRY OPS</h1>
+        <div class="hdr-sub" id="hdr-sub">// initializing</div>
+      </div>
+    </div>
+    <div class="hdr-right" id="hdr-stats"></div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab is-active" data-tab="inventory" role="tab">INVENTORY</button>
+    <button class="tab" data-tab="log" role="tab">LOG</button>
+    <button class="tab" data-tab="analytics" role="tab">ANALYTICS</button>
+  </nav>
+
+  <main>
+    <section class="panel is-active" id="panel-inventory" role="tabpanel">
+      <div id="inventory-content" class="content">
+        <div class="loading">LOADING INVENTORY…</div>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-log" role="tabpanel">
+      <div class="filters">
+        <label class="filter">
+          <span>STATUS</span>
+          <select id="filter-status">
+            <option value="">all</option>
+            <option value="in_pantry">in pantry</option>
+            <option value="consumed">consumed</option>
+            <option value="wasted-spoiled">spoiled</option>
+            <option value="wasted-rejected">rejected</option>
+          </select>
+        </label>
+        <label class="filter">
+          <span>SECTION</span>
+          <select id="filter-section">
+            <option value="">all</option>
+          </select>
+        </label>
+        <label class="filter filter-search">
+          <span>SEARCH</span>
+          <input type="search" id="filter-search" placeholder="item name…" />
+        </label>
+      </div>
+      <div id="log-content" class="content">
+        <div class="loading">LOADING LOG…</div>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-analytics" role="tabpanel">
+      <div id="analytics-content" class="content">
+        <div class="loading">LOADING ANALYTICS…</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span>SOURCE :: Todoist · Pantry project</span>
+    <span id="foot-sync">LAST SYNC :: —</span>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
