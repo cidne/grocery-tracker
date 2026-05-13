@@ -3,23 +3,10 @@
 Sync Todoist Pantry project state to data/pantry.json.
 
 Uses the Todoist unified API v1 (https://api.todoist.com/api/v1/).
-The old REST v2 endpoints (api.todoist.com/rest/v2/*) return 410 Gone.
-
-Reads:
-  - Open tasks
-  - Sections
-  - Completed tasks (looped 6-week windows back WEEKS_BACK weeks)
-
-Parses task descriptions in the format:
-    Purchased: YYYY-MM-DD at <store>
-    Qty: N <unit> @ $X.XX/<unit>
-    Total: $X.XX
-
-Writes data/pantry.json (overwrites).
 
 Env:
   TODOIST_API_TOKEN - required
-  WEEKS_BACK        - optional, default 12 (how far back to look for completions)
+  WEEKS_BACK        - optional, default 12
 """
 
 from __future__ import annotations
@@ -34,7 +21,6 @@ from pathlib import Path
 import requests
 
 PANTRY_PROJECT_ID = "6gcmCjvW6GHh9FGQ"
-
 BASE = "https://api.todoist.com/api/v1"
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -49,11 +35,13 @@ DESC_RE = {
         r"^Qty:\s*(?P<qty>[\d.]+)\s+(?P<unit>\S+)\s*(?:@\s*\$(?P<price>[\d.]+)(?:/\S+)?)?\s*$",
         re.MULTILINE,
     ),
-    "total": re.compile(
-        r"^Total:\s*\$(?P<total>[\d.]+)\s*$",
-        re.MULTILINE,
-    ),
+    "total": re.compile(r"^Total:\s*\$(?P<total>[\d.]+)\s*$", re.MULTILINE),
 }
+
+
+def iso_z(dt: datetime) -> str:
+    """Format a UTC datetime as ISO 8601 with trailing Z."""
+    return dt.strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
 def auth_headers() -> dict[str, str]:
@@ -64,16 +52,14 @@ def auth_headers() -> dict[str, str]:
 
 
 def paginate(url: str, headers: dict, params: dict) -> list[dict]:
-    """GET a v1 endpoint and walk cursor pagination, returning all results.
-
-    v1 paginated responses use the envelope:
-        { "results": [...], "next_cursor": "..." | null }
-    Some endpoints (completed-by-date) use "items" instead of "results".
-    """
     out: list[dict] = []
     p = dict(params)
     while True:
         r = requests.get(url, headers=headers, params=p, timeout=30)
+        if r.status_code >= 400:
+            print(f"  HTTP {r.status_code} on {url}", file=sys.stderr)
+            print(f"  params: {p}", file=sys.stderr)
+            print(f"  body: {r.text[:500]}", file=sys.stderr)
         r.raise_for_status()
         data = r.json()
         batch = data.get("results") or data.get("items") or []
@@ -91,52 +77,59 @@ def get_sections(headers: dict) -> dict[str, str]:
         headers,
         {"project_id": PANTRY_PROJECT_ID, "limit": 200},
     )
+    print(f"  sections: {len(items)}")
     return {s["id"]: s["name"] for s in items}
 
 
 def get_open_tasks(headers: dict) -> list[dict]:
-    return paginate(
+    items = paginate(
         f"{BASE}/tasks",
         headers,
         {"project_id": PANTRY_PROJECT_ID, "limit": 200},
     )
+    print(f"  open tasks: {len(items)}")
+    return items
 
 
 def get_completed_tasks(headers: dict, weeks_back: int = 12) -> list[dict]:
-    """Fetch completed tasks via /tasks/completed/by_completion_date.
-
-    The endpoint requires both since and until and limits each window to
-    ~6 weeks. We loop windows backwards from now to weeks_back.
-    """
     now = datetime.now(timezone.utc)
     start = now - timedelta(weeks=weeks_back)
     items: list[dict] = []
     window_end = now
+    n_windows = 0
     while window_end > start:
         window_start = max(start, window_end - timedelta(days=42))
+        n_windows += 1
+        print(f"  completed window {n_windows}: {iso_z(window_start)} -> {iso_z(window_end)}")
         page = paginate(
             f"{BASE}/tasks/completed/by_completion_date",
             headers,
             {
                 "project_id": PANTRY_PROJECT_ID,
-                "since": window_start.strftime("%Y-%m-%dT%H:%M:%S"),
-                "until": window_end.strftime("%Y-%m-%dT%H:%M:%S"),
+                "since": iso_z(window_start),
+                "until": iso_z(window_end),
                 "limit": 200,
             },
         )
+        print(f"    -> {len(page)} tasks")
         items.extend(page)
         window_end = window_start
+    print(f"  completed tasks total: {len(items)}")
+    if items:
+        for it in items[:5]:
+            print(
+                f"    - {it.get('content','?')} "
+                f"[labels={it.get('labels') or []}] "
+                f"completed_at={it.get('completed_at')}"
+            )
     return items
 
 
 def parse_description(desc: str) -> dict:
     out = {
-        "purchased_date": None,
-        "store": None,
-        "qty": None,
-        "unit": None,
-        "unit_price": None,
-        "total": None,
+        "purchased_date": None, "store": None,
+        "qty": None, "unit": None,
+        "unit_price": None, "total": None,
     }
     if not desc:
         return out
@@ -203,6 +196,7 @@ def to_item(task: dict, sections: dict, completed: bool) -> dict:
 
 def main() -> int:
     weeks_back = int(os.environ.get("WEEKS_BACK", "12"))
+    print(f"Syncing Pantry project {PANTRY_PROJECT_ID} (looking back {weeks_back}w)...")
     headers = auth_headers()
     sections = get_sections(headers)
     open_tasks = get_open_tasks(headers)
@@ -229,3 +223,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
+
