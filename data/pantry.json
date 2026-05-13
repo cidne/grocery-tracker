@@ -1,5 +1,5 @@
 {
-  "last_sync": "2026-05-13T02:51:50+00:00",
+  "last_sync": "2026-05-13T08:42:07+00:00",
   "items": [
     {
       "id": "6gcmCq34q7Q9FMfQ",
@@ -400,6 +400,24 @@
       "completed_at": null,
       "days_held": 1,
       "labels": []
+    },
+    {
+      "id": "6gcmCq4JW8vvwfRx",
+      "name": "White onion (0.83 lb)",
+      "section": "Produce",
+      "status": "wasted-spoiled",
+      "purchased_date": "2026-05-12",
+      "store": "Orote Commissary",
+      "qty": 0.83,
+      "unit": "lb",
+      "unit_price": 2.13,
+      "total": 1.77,
+      "added_at": "2026-05-12T03:45:46.806537Z",
+      "completed_at": "2026-05-12T21:10:11.977003Z",
+      "days_held": 0,
+      "labels": [
+        "wasted-spoiled"
+      ]
     }
   ]
 }
