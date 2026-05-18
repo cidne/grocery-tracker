@@ -1,5 +1,5 @@
 {
-  "last_sync": "2026-05-17T19:05:56+00:00",
+  "last_sync": "2026-05-18T03:29:02+00:00",
   "items": [
     {
       "id": "6gcmCq34q7Q9FMfQ",
@@ -14,7 +14,7 @@
       "total": 3.08,
       "added_at": "2026-05-12T03:45:45.924712Z",
       "completed_at": null,
-      "days_held": 5,
+      "days_held": 6,
       "labels": []
     },
     {
@@ -30,7 +30,7 @@
       "total": 2.4,
       "added_at": "2026-05-12T03:45:46.021587Z",
       "completed_at": null,
-      "days_held": 5,
+      "days_held": 6,
       "labels": []
     },
     {
@@ -46,7 +46,7 @@
       "total": 3.08,
       "added_at": "2026-05-12T03:45:46.457381Z",
       "completed_at": null,
-      "days_held": 5,
+      "days_held": 6,
       "labels": []
     },
     {
@@ -62,23 +62,7 @@
       "total": 9.19,
       "added_at": "2026-05-12T03:45:46.572811Z",
       "completed_at": null,
-      "days_held": 5,
-      "labels": []
-    },
-    {
-      "id": "6gfFjrfwWX79JVCx",
-      "name": "US lean ground beef",
-      "section": "Meat & Seafood",
-      "status": "in_pantry",
-      "purchased_date": "2026-05-14",
-      "store": "Pay-Less Supermarkets",
-      "qty": 1.0,
-      "unit": "pkg",
-      "unit_price": 8.05,
-      "total": 8.05,
-      "added_at": "2026-05-14T08:36:36.412468Z",
-      "completed_at": null,
-      "days_held": 3,
+      "days_held": 6,
       "labels": []
     },
     {
@@ -94,7 +78,7 @@
       "total": 5.99,
       "added_at": "2026-05-12T03:45:47.738622Z",
       "completed_at": null,
-      "days_held": 5,
+      "days_held": 6,
       "labels": []
     },
     {
@@ -110,7 +94,7 @@
       "total": 4.23,
       "added_at": "2026-05-12T21:05:10.165973Z",
       "completed_at": null,
-      "days_held": 5,
+      "days_held": 6,
       "labels": []
     },
     {
@@ -126,7 +110,7 @@
       "total": 5.99,
       "added_at": "2026-05-12T03:45:48.247779Z",
       "completed_at": null,
-      "days_held": 5,
+      "days_held": 6,
       "labels": []
     },
     {
@@ -142,7 +126,7 @@
       "total": 4.23,
       "added_at": "2026-05-12T21:05:11.367939Z",
       "completed_at": null,
-      "days_held": 5,
+      "days_held": 6,
       "labels": []
     },
     {
@@ -158,7 +142,7 @@
       "total": 2.65,
       "added_at": "2026-05-12T03:45:48.841872Z",
       "completed_at": null,
-      "days_held": 5,
+      "days_held": 6,
       "labels": []
     },
     {
@@ -174,7 +158,7 @@
       "total": 4.23,
       "added_at": "2026-05-12T21:05:14.122926Z",
       "completed_at": null,
-      "days_held": 5,
+      "days_held": 6,
       "labels": []
     },
     {
@@ -190,7 +174,7 @@
       "total": 3.45,
       "added_at": "2026-05-12T03:45:49.584335Z",
       "completed_at": null,
-      "days_held": 5,
+      "days_held": 6,
       "labels": []
     },
     {
@@ -206,7 +190,7 @@
       "total": 6.83,
       "added_at": "2026-05-12T03:45:49.884675Z",
       "completed_at": null,
-      "days_held": 5,
+      "days_held": 6,
       "labels": []
     },
     {
@@ -222,7 +206,7 @@
       "total": 3.99,
       "added_at": "2026-05-14T08:36:36.330235Z",
       "completed_at": null,
-      "days_held": 3,
+      "days_held": 4,
       "labels": []
     },
     {
@@ -238,23 +222,7 @@
       "total": 2.17,
       "added_at": "2026-05-12T21:05:10.168554Z",
       "completed_at": null,
-      "days_held": 5,
-      "labels": []
-    },
-    {
-      "id": "6gcwfw9XWrQF2Q9Q",
-      "name": "Hass avocado (2/2)",
-      "section": "Produce",
-      "status": "in_pantry",
-      "purchased_date": "2026-05-12",
-      "store": "Orote Commissary",
-      "qty": 1.0,
-      "unit": "ea",
-      "unit_price": 1.43,
-      "total": 1.43,
-      "added_at": "2026-05-12T21:05:11.004928Z",
-      "completed_at": null,
-      "days_held": 5,
+      "days_held": 6,
       "labels": []
     },
     {
@@ -270,7 +238,7 @@
       "total": 2.17,
       "added_at": "2026-05-12T21:05:11.083948Z",
       "completed_at": null,
-      "days_held": 5,
+      "days_held": 6,
       "labels": []
     },
     {
@@ -286,7 +254,7 @@
       "total": 1.08,
       "added_at": "2026-05-14T08:36:36.171729Z",
       "completed_at": null,
-      "days_held": 3,
+      "days_held": 4,
       "labels": []
     },
     {
@@ -302,7 +270,7 @@
       "total": 2.25,
       "added_at": "2026-05-12T21:05:11.770728Z",
       "completed_at": null,
-      "days_held": 5,
+      "days_held": 6,
       "labels": []
     },
     {
@@ -318,7 +286,7 @@
       "total": 1.79,
       "added_at": "2026-05-14T08:36:37.520682Z",
       "completed_at": null,
-      "days_held": 3,
+      "days_held": 4,
       "labels": []
     },
     {
@@ -334,7 +302,7 @@
       "total": 2.25,
       "added_at": "2026-05-12T21:05:14.091983Z",
       "completed_at": null,
-      "days_held": 5,
+      "days_held": 6,
       "labels": []
     },
     {
@@ -350,7 +318,7 @@
       "total": 2.25,
       "added_at": "2026-05-12T21:05:16.247495Z",
       "completed_at": null,
-      "days_held": 5,
+      "days_held": 6,
       "labels": []
     },
     {
@@ -366,7 +334,7 @@
       "total": 10.99,
       "added_at": "2026-05-14T08:36:36.577512Z",
       "completed_at": null,
-      "days_held": 3,
+      "days_held": 4,
       "labels": []
     },
     {
@@ -382,7 +350,39 @@
       "total": 9.69,
       "added_at": "2026-05-14T08:36:40.682840Z",
       "completed_at": null,
-      "days_held": 3,
+      "days_held": 4,
+      "labels": []
+    },
+    {
+      "id": "6gcwfw9XWrQF2Q9Q",
+      "name": "Hass avocado (2/2)",
+      "section": "Produce",
+      "status": "consumed",
+      "purchased_date": "2026-05-12",
+      "store": "Orote Commissary",
+      "qty": 1.0,
+      "unit": "ea",
+      "unit_price": 1.43,
+      "total": 1.43,
+      "added_at": "2026-05-12T21:05:11.004928Z",
+      "completed_at": "2026-05-18T00:16:17.182365Z",
+      "days_held": 6,
+      "labels": []
+    },
+    {
+      "id": "6gfFjrfwWX79JVCx",
+      "name": "US lean ground beef",
+      "section": "Meat & Seafood",
+      "status": "consumed",
+      "purchased_date": "2026-05-14",
+      "store": "Pay-Less Supermarkets",
+      "qty": 1.0,
+      "unit": "pkg",
+      "unit_price": 8.05,
+      "total": 8.05,
+      "added_at": "2026-05-14T08:36:36.412468Z",
+      "completed_at": "2026-05-18T00:15:58.083226Z",
+      "days_held": 4,
       "labels": []
     },
     {
